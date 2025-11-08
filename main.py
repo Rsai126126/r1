@@ -29,6 +29,10 @@ def df_to_xlsx_bytes(df: pd.DataFrame) -> bytes:
     buf.seek(0)
     return buf.getvalue()
 
+@app.get("/")
+def home():
+    return {"message": "✅ API is live on Render and working!"}
+
 @app.post("/reconcile")
 async def reconcile(
     shipment_history: UploadFile = File(..., description="Shipment_History___Total-*.csv"),
